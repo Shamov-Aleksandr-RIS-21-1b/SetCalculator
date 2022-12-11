@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Sets">
+      <HintPath>..\..\MyLibs\Sets\bin\Debug\net6.0\Sets.dll</HintPath>
+    </Reference>
+	<Reference Include="FuncTools">
+      <HintPath>..\..\MyLibs\Sets\bin\Debug\net6.0\FuncTools.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
