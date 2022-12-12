@@ -11,9 +11,29 @@ namespace SetCalculator
         {
             InitializeComponent();
             Univers = new Universum();
-            firstOperandKey = "";
-            secondOperandKey = "";
-            setAct = null;
+            comboBoxes = new ComboBox[]
+            {
+                comboBoxSet,
+
+                UnionSet1,
+                UnionSet2,
+
+                CrossSet1,
+                CrossSet2,
+
+                DiffSet1,
+                DiffSet2,
+
+                SymmDiffSet1,
+                SymmDiffSet2,
+
+                AdditionSet,
+
+                InclusionSet1,
+                InclusionSet2,
+
+                BelongSet,
+            };
         }
 
         private Set ParseToSet(string source)
@@ -26,11 +46,12 @@ namespace SetCalculator
             }
             else
             {
-                Regex regexNumber = new Regex("^ *[1-9][0-9]* *$");
-                Regex regexRange = new Regex("^ *[1-9][0-9]* *- *[1-9][0-9]* *$");
+                Regex regexNumber = new Regex("^ *-?[1-9][0-9]* *$");
+                Regex regexNull = new Regex("^ *[0] *$");
+                Regex regexRange = new Regex("^ *-?[1-9][0-9]* *- *-?[1-9][0-9]* *$");
                 for (int i = 0; i < strNumbers.Length; ++i)
                 {
-                    if (!regexNumber.IsMatch(strNumbers[i]) && !regexRange.IsMatch(strNumbers[i]))
+                    if (!regexNumber.IsMatch(strNumbers[i]) && !regexRange.IsMatch(strNumbers[i]) && !regexNull.IsMatch(strNumbers[i]))
                     {
                         throw new Exception("Ошибка задания множества");
                     }
@@ -38,7 +59,7 @@ namespace SetCalculator
                 }
                 for (int i = 0; i < strNumbers.Length; ++i)
                 {
-                    if (regexNumber.IsMatch(strNumbers[i]))
+                    if (regexNumber.IsMatch(strNumbers[i]) || regexNull.IsMatch(strNumbers[i]))
                     {
                         FuncTool.IgnoreExc<ArgumentException>(() => set.AddItem(Int32.Parse(strNumbers[i])));
                     }
@@ -64,14 +85,92 @@ namespace SetCalculator
             return set;
         }
 
-        private void comboBoxChooseSet_TextUpdate(object sender, EventArgs e)
+        #region comboBoxSet Events
+
+        private void EnableSets()
         {
-            string key = comboBoxChooseSet.Text;
-            if (Univers.ContainsKey(key))
-                textBoxSet.Text = Univers[key].ToStrOnlyItems();
-            else
-                textBoxSet.Text = "";
+            textBoxSet.Enabled = true;
+            buttonSaveSet.Enabled = true;
+            buttonResetSet.Enabled = true;
+            numericUpDown1.Enabled = true;
+            buttonRandomInit.Enabled = true;
+            buttonDeleteSet.Enabled = true;
         }
+
+        private void DisableSets()
+        {
+            textBoxSet.Enabled = false;
+            buttonSaveSet.Enabled = false;
+            buttonResetSet.Enabled = false;
+            numericUpDown1.Enabled = false;
+            buttonRandomInit.Enabled = false;
+            buttonDeleteSet.Enabled = false;
+        }
+
+        private void comboBoxSet_TextUpdate(object sender, EventArgs e)
+        {
+            if (Univers.ContainsKey(comboBoxSet.Text))
+            {
+                comboBoxSet_SelectedIndexChanged(sender, e);
+            }
+            else if (comboBoxSet.Text != "")
+            {
+                textBoxSet.Text = "";
+                EnableSets();
+            }
+            else
+            {
+                textBoxSet.Enabled = false;
+                DisableSets();
+            }
+        }
+
+        private void comboBoxSet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBoxSet.Text = Univers[comboBoxSet.Text].ToStrOnlyItems();
+            EnableSets();
+        }
+
+        #endregion
+
+        #region DoAct
+
+        private void DoAct(ref TextBox answer, ComboBox source1, ComboBox source2, BinaryAct action)
+        {
+            answer.Text = "";
+            string key1 = source1.Text;
+            string key2 = source2.Text;
+            if (Univers.ContainsKey(key1) && Univers.ContainsKey(key2))
+                answer.Text = action(Univers[key1], Univers[key2]).ToString();
+        }
+
+        private void DoAct(ref TextBox answer, ComboBox source, UnaryAct action)
+        {
+            answer.Text = "";
+            string key = source.Text;
+            if (Univers.ContainsKey(key))
+                answer.Text = action(Univers[key]).ToString();
+        }
+
+        private void DoAct(ref TextBox answer, ComboBox source1, ComboBox source2, BoolSetSetAct action)
+        {
+            answer.Text = "";
+            string key1 = source1.Text;
+            string key2 = source2.Text;
+            if (Univers.ContainsKey(key1) && Univers.ContainsKey(key2))
+                answer.Text = action(Univers[key1], Univers[key2]).ToString();
+        }
+
+        private void DoAct(ref TextBox answer, TextBox source1, ComboBox source2, BoolIntSetAct action)
+        {
+            answer.Text = "";
+            bool isParsed = Int32.TryParse(source1.Text, out int number);
+            string key = source2.Text;
+            if (Univers.ContainsKey(key) && isParsed)
+                answer.Text = action(number, Univers[key]).ToString();
+        }
+
+        #endregion
 
         #region Universuum buttons
 
@@ -95,6 +194,7 @@ namespace SetCalculator
                     Univers.Sort();
                     MessageBox.Show("Универсуум успешно изменен", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                numericUpDown1.Maximum = Univers.Count;
             }
             catch (Exception ex)
             {
@@ -115,7 +215,7 @@ namespace SetCalculator
         private void buttonSaveSet_Click(object sender, EventArgs e)
         {
             Set set = new Set();
-            string key = comboBoxChooseSet.Text;
+            string key = comboBoxSet.Text;
             try
             {
                 if (key == "")
@@ -134,10 +234,10 @@ namespace SetCalculator
                     Univers.AddVariableSet(key, set);
                     Univers[key].Sort();
                     MessageBox.Show($"Множество {key} успешно сохранено", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    comboBoxChooseSet.Items.Add(key);
-                    comboBoxChooseBelongSet.Items.Add(key);
-                    comboBoxChooseInclSet1.Items.Add(key);
-                    comboBoxChooseInclSet2.Items.Add(key);
+                    foreach (ComboBox box in comboBoxes)
+                    {
+                        box.Items.Add(key);
+                    }
                 }
             }
             catch (ArgumentNullException)
@@ -148,48 +248,66 @@ namespace SetCalculator
             {
                 MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
             if (Univers.ContainsKey(key))
             {
                 textBoxSet.Text = Univers[key].ToStrOnlyItems();
             }
         }
 
-        private void comboBoxChooseSet_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            textBoxSet.Text = Univers[comboBoxChooseSet.Text].ToStrOnlyItems();
-        }
-
         private void buttonResetSet_Click(object sender, EventArgs e)
         {
-            if (comboBoxChooseSet.Text == "")
+            if (comboBoxSet.Text == "")
             {
                 MessageBox.Show("Сначала выберите множество", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (!Univers.ContainsKey(comboBoxChooseSet.Text))
+            else if (!Univers.ContainsKey(comboBoxSet.Text))
             {
                 MessageBox.Show("Сначала сохраните множество", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                textBoxSet.Text = Univers[comboBoxChooseSet.Text].ToStrOnlyItems();
+                textBoxSet.Text = Univers[comboBoxSet.Text].ToStrOnlyItems();
+            }
+        }
+
+        private void buttonRandomInit_Click(object sender, EventArgs e)
+        {
+            Set randSet;
+            try
+            {
+                randSet = Set.RandomInit(Univers, (int)numericUpDown1.Value);
+                textBoxSet.Text = randSet.ToStrOnlyItems();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void buttonDeleteSet_Click(object sender, EventArgs e)
         {
-            if (comboBoxChooseSet.Text == "" || !Univers.ContainsKey(comboBoxChooseSet.Text))
+            if (comboBoxSet.Text == "" || !Univers.ContainsKey(comboBoxSet.Text))
             {
                 MessageBox.Show("Сначала выберите или сохраните множество", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                Univers.RemoveVariableSet(comboBoxChooseSet.Text);
+                string key = comboBoxSet.Text;
+                Univers.RemoveVariableSet(key);
+                foreach (ComboBox box in comboBoxes)
+                {
+                    box.Items.Remove(key);
+                }
+                comboBoxSet.Text = "";
+                textBoxSet.Text = "";
+                MessageBox.Show("Множество успешно удалено", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         #endregion
 
-        #region textBox KeyDown
+        #region KeyDown
 
         private void textBoxUniversuum_KeyDown(object sender, KeyEventArgs e)
         {
@@ -204,9 +322,51 @@ namespace SetCalculator
 
         private void textBoxSet_KeyDown(object sender, KeyEventArgs e)
         {
-            if (textBoxSet.Focused && e.KeyCode == Keys.Enter)
+            if (textBoxSet.Focused)
             {
-                this.buttonSaveSet_Click(sender, e);
+                if (e.KeyCode == Keys.Enter)
+                {
+                    this.buttonSaveSet_Click(sender, e);
+                }
+            }
+        }
+
+        private void numericUpDown1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (numericUpDown1.Focused)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.Enter:
+                        {
+                            if (numericUpDown1.Value > numericUpDown1.Maximum)
+                            {
+                                MessageBox.Show("Количество элементов случайного множества не может\nпревышать количество элементов в универсуме", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            break;
+                        }
+                    case Keys.Escape:
+                        {
+                            //
+                            break;
+                        }
+                    case Keys.Down:
+                        {
+                            if (numericUpDown1.Value - 1 >= numericUpDown1.Minimum)
+                            {
+                                numericUpDown1.Value -= 1;
+                            }
+                            break;
+                        }
+                    case Keys.Up:
+                        {
+                            if (numericUpDown1.Value + 1 <= numericUpDown1.Maximum)
+                            {
+                                numericUpDown1.Value += 1;
+                            }
+                            break;
+                        }
+                }
             }
         }
 
@@ -214,150 +374,39 @@ namespace SetCalculator
 
         #region Set Actions
 
-        private void buttonAddition_Click(object sender, EventArgs e)
+        private void CalculateUnion(object sender, EventArgs e)
         {
-            if (comboBoxChooseSet.Text == "" || !Univers.ContainsKey(comboBoxChooseSet.Text))
-            {
-                MessageBox.Show("Сначала выберите или сохраните множество", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                textBoxSet.Text = Univers[comboBoxChooseSet.Text].Addition().ToStrOnlyItems();
-                comboBoxChooseSet.Text = "";
-            }
+            DoAct(ref UnionResult, UnionSet1, UnionSet2, Set.Union);
         }
 
-        private void buttonUnion_Click(object sender, EventArgs e)
+        private void CalculateCross(object sender, EventArgs e)
         {
-            if (comboBoxChooseSet.Text == "" || !Univers.ContainsKey(comboBoxChooseSet.Text))
-            {
-                MessageBox.Show("Сначала выберите или сохраните множество", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                textBoxChoosenAct.Text = buttonUnion.Text;
-                setAct = (Set set1, Set set2) => Set.Union(set1, set2); 
-                firstOperandKey = comboBoxChooseSet.Text;
-                textBoxSet.Text = "";
-                comboBoxChooseSet.Text = "";
-            }
+            DoAct(ref CrossResult, CrossSet1, CrossSet2, Set.Cross);
         }
 
-        private void buttonCross_Click(object sender, EventArgs e)
+        private void CalculateDiff(object sender, EventArgs e)
         {
-            if (comboBoxChooseSet.Text == "" || !Univers.ContainsKey(comboBoxChooseSet.Text))
-            {
-                MessageBox.Show("Сначала выберите или сохраните множество", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                textBoxChoosenAct.Text = buttonCross.Text;
-                setAct = (Set set1, Set set2) => Set.Cross(set1, set2);
-                firstOperandKey = comboBoxChooseSet.Text;
-                textBoxSet.Text = "";
-                comboBoxChooseSet.Text = "";
-            }
+            DoAct(ref DiffResult, DiffSet1, DiffSet2, Set.Diff);
         }
 
-        private void buttonDiff_Click(object sender, EventArgs e)
+        private void CalculateSymmDiff(object sender, EventArgs e)
         {
-            if (comboBoxChooseSet.Text == "" || !Univers.ContainsKey(comboBoxChooseSet.Text))
-            {
-                MessageBox.Show("Сначала выберите или сохраните множество", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                textBoxChoosenAct.Text = buttonDiff.Text;
-                setAct = (Set set1, Set set2) => Set.Diff(set1, set2);
-                firstOperandKey = comboBoxChooseSet.Text;
-                textBoxSet.Text = "";
-                comboBoxChooseSet.Text = "";
-            }
+            DoAct(ref SymmDiffResult, SymmDiffSet1, SymmDiffSet2, Set.SymDiff);
         }
 
-        private void buttonSymmDiff_Click(object sender, EventArgs e)
+        private void CalculateAddition(object sender, EventArgs e)
         {
-            if (comboBoxChooseSet.Text == "" || !Univers.ContainsKey(comboBoxChooseSet.Text))
-            {
-                MessageBox.Show("Сначала выберите или сохраните множество", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                textBoxChoosenAct.Text = buttonSymmDiff.Text;
-                setAct = (Set set1, Set set2) => Set.SymDiff(set1, set2);
-                firstOperandKey = comboBoxChooseSet.Text;
-                textBoxSet.Text = "";
-                comboBoxChooseSet.Text = "";
-            }
+            DoAct(ref AdditionResult, AdditionSet, Set.Addition);
         }
 
-        private void buttonEquals_Click(object sender, EventArgs e)
+        private void CalculateInclusion(object sender, EventArgs e)
         {
-            if (comboBoxChooseSet.Text == "" || !Univers.ContainsKey(comboBoxChooseSet.Text))
-            {
-                MessageBox.Show("Сначала выберите или сохраните множество", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                textBoxChoosenAct.Text = "";
-                secondOperandKey = comboBoxChooseSet.Text;
-                comboBoxChooseSet.Text = "";
-                Set result = setAct(Univers[firstOperandKey], Univers[secondOperandKey]);
-                setAct = null;
-                result.Sort();
-                textBoxSet.Text = result.ToStrOnlyItems();
-            }
+            DoAct(ref InclusionResult, InclusionSet1, InclusionSet2, Set.Inclusion);
         }
 
-        #endregion
-
-        #region Inclusion
-
-        private void comboBoxChooseInclSet1_SelectedIndexChanged(object sender, EventArgs e)
+        private void CalculateBelongs(object sender, EventArgs e)
         {
-            textBoxInclusionResult.Text = "";
-            string key1 = comboBoxChooseInclSet1.Text;
-            string key2 = comboBoxChooseInclSet2.Text;
-            if (Univers.ContainsKey(key1) && Univers.ContainsKey(key2))
-                textBoxInclusionResult.Text = Univers[key1].Inclusion(Univers[key2]).ToString();
-        }
-
-        private void comboBoxChooseInclSet2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            comboBoxChooseInclSet1_SelectedIndexChanged(sender, e);
-        }
-
-        private void comboBoxChooseInclSet2_TextUpdate(object sender, EventArgs e)
-        {
-            comboBoxChooseInclSet1_SelectedIndexChanged(sender, e);
-        }
-
-        private void comboBoxChooseInclSet1_TextUpdate(object sender, EventArgs e)
-        {
-            comboBoxChooseInclSet1_SelectedIndexChanged(sender, e);
-        }
-
-        #endregion
-
-        #region Belongs
-
-        private void comboBoxChooseBelongSet_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            textBoxBelongsResult.Text = "";
-            string key = comboBoxChooseBelongSet.Text;
-            bool isInt = Int32.TryParse(textBoxBelongInt.Text, out int number);
-            if (Univers.ContainsKey(key) && isInt)
-                textBoxBelongsResult.Text = number.Belongs(Univers[key]).ToString();
-        }
-
-        private void textBoxBelongInt_TextChanged(object sender, EventArgs e)
-        {
-            comboBoxChooseBelongSet_SelectedIndexChanged(sender, e);
-        }
-
-        private void comboBoxChooseBelongSet_TextUpdate(object sender, EventArgs e)
-        {
-            comboBoxChooseBelongSet_SelectedIndexChanged(sender, e);
+            DoAct(ref BelongsResult, BelongInt, BelongSet, Set.Belongs);
         }
 
         #endregion
