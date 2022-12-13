@@ -34,6 +34,10 @@ namespace SetCalculator
 
                 BelongSet,
             };
+            for (int i = 1; i < comboBoxes.Length; ++i)
+            {
+                comboBoxes[i].Items.Add("U");
+            }
         }
 
         private Set ParseToSet(string source)
@@ -47,8 +51,8 @@ namespace SetCalculator
             else
             {
                 Regex regexNumber = new Regex("^ *-?[1-9][0-9]* *$");
-                Regex regexNull = new Regex("^ *[0] *$");
-                Regex regexRange = new Regex("^ *-?[1-9][0-9]* *- *-?[1-9][0-9]* *$");
+                Regex regexNull = new Regex("^ *0 *$");
+                Regex regexRange = new Regex("^ *-?[1-9][0-9]* *_ *-?[1-9][0-9]* *$");
                 for (int i = 0; i < strNumbers.Length; ++i)
                 {
                     if (!regexNumber.IsMatch(strNumbers[i]) && !regexRange.IsMatch(strNumbers[i]) && !regexNull.IsMatch(strNumbers[i]))
@@ -65,7 +69,7 @@ namespace SetCalculator
                     }
                     else
                     {
-                        string[] tmp = strNumbers[i].Split("-");
+                        string[] tmp = strNumbers[i].Split("_");
                         int start = Int32.Parse(tmp[0]);
                         int end = Int32.Parse(tmp[1]);
                         if (start > end)
@@ -120,7 +124,7 @@ namespace SetCalculator
             }
             else
             {
-                textBoxSet.Enabled = false;
+                textBoxSet.Text = "";
                 DisableSets();
             }
         }
@@ -142,6 +146,12 @@ namespace SetCalculator
             string key2 = source2.Text;
             if (Univers.ContainsKey(key1) && Univers.ContainsKey(key2))
                 answer.Text = action(Univers[key1], Univers[key2]).ToString();
+            else if (key1 == "U" && Univers.ContainsKey(key2))
+                answer.Text = action(Univers, Univers[key2]).ToString();
+            else if (Univers.ContainsKey(key1) && key2 == "U")
+                answer.Text = action(Univers[key1], Univers).ToString();
+            else if (key1 == "U" && key2 == "U")
+                answer.Text = action(Univers, Univers).ToString();
         }
 
         private void DoAct(ref TextBox answer, ComboBox source, UnaryAct action)
@@ -150,6 +160,8 @@ namespace SetCalculator
             string key = source.Text;
             if (Univers.ContainsKey(key))
                 answer.Text = action(Univers[key]).ToString();
+            else if (key == "U")
+                answer.Text = action(Univers).ToString();
         }
 
         private void DoAct(ref TextBox answer, ComboBox source1, ComboBox source2, BoolSetSetAct action)
@@ -159,6 +171,12 @@ namespace SetCalculator
             string key2 = source2.Text;
             if (Univers.ContainsKey(key1) && Univers.ContainsKey(key2))
                 answer.Text = action(Univers[key1], Univers[key2]).ToString();
+            else if (key1 == "U" && Univers.ContainsKey(key2))
+                answer.Text = action(Univers, Univers[key2]).ToString();
+            else if (Univers.ContainsKey(key1) && key2 == "U")
+                answer.Text = action(Univers[key1], Univers).ToString();
+            else if (key1 == "U" && key2 == "U")
+                answer.Text = action(Univers, Univers).ToString();
         }
 
         private void DoAct(ref TextBox answer, TextBox source1, ComboBox source2, BoolIntSetAct action)
@@ -168,6 +186,8 @@ namespace SetCalculator
             string key = source2.Text;
             if (Univers.ContainsKey(key) && isParsed)
                 answer.Text = action(number, Univers[key]).ToString();
+            else if (key == "U" && isParsed)
+                answer.Text = action(number, Univers).ToString();
         }
 
         #endregion
@@ -195,6 +215,10 @@ namespace SetCalculator
                     MessageBox.Show("Универсуум успешно изменен", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 numericUpDown1.Maximum = Univers.Count;
+            }
+            catch (OverflowException)
+            {
+                MessageBox.Show("Ошибка задания множества: слишком большое число", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -243,6 +267,10 @@ namespace SetCalculator
             catch (ArgumentNullException)
             {
                 MessageBox.Show("Сначала введите имя множества", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (OverflowException)
+            {
+                MessageBox.Show("Ошибка задания множества: слишком большое число", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -311,62 +339,17 @@ namespace SetCalculator
 
         private void textBoxUniversuum_KeyDown(object sender, KeyEventArgs e)
         {
-            if (textBoxUniversuum.Focused)
+            if (e.KeyCode == Keys.Enter)
             {
-                if (e.KeyCode == Keys.Enter)
-                {
-                    this.buttonApply_Click(sender, e);
-                }
+                this.buttonApply_Click(sender, e);
             }
         }
 
         private void textBoxSet_KeyDown(object sender, KeyEventArgs e)
         {
-            if (textBoxSet.Focused)
+            if (e.KeyCode == Keys.Enter)
             {
-                if (e.KeyCode == Keys.Enter)
-                {
-                    this.buttonSaveSet_Click(sender, e);
-                }
-            }
-        }
-
-        private void numericUpDown1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (numericUpDown1.Focused)
-            {
-                switch (e.KeyCode)
-                {
-                    case Keys.Enter:
-                        {
-                            if (numericUpDown1.Value > numericUpDown1.Maximum)
-                            {
-                                MessageBox.Show("Количество элементов случайного множества не может\nпревышать количество элементов в универсуме", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            break;
-                        }
-                    case Keys.Escape:
-                        {
-                            //
-                            break;
-                        }
-                    case Keys.Down:
-                        {
-                            if (numericUpDown1.Value - 1 >= numericUpDown1.Minimum)
-                            {
-                                numericUpDown1.Value -= 1;
-                            }
-                            break;
-                        }
-                    case Keys.Up:
-                        {
-                            if (numericUpDown1.Value + 1 <= numericUpDown1.Maximum)
-                            {
-                                numericUpDown1.Value += 1;
-                            }
-                            break;
-                        }
-                }
+                this.buttonSaveSet_Click(sender, e);
             }
         }
 

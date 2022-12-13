@@ -121,6 +121,7 @@
             this.comboBoxSet.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxSet.FormattingEnabled = true;
             this.comboBoxSet.Location = new System.Drawing.Point(19, 184);
+            this.comboBoxSet.MaxLength = 1;
             this.comboBoxSet.Name = "comboBoxSet";
             this.comboBoxSet.Size = new System.Drawing.Size(106, 38);
             this.comboBoxSet.Sorted = true;
@@ -156,6 +157,7 @@
             this.textBoxSet.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxSet.Location = new System.Drawing.Point(174, 182);
             this.textBoxSet.Name = "textBoxSet";
+            this.textBoxSet.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.textBoxSet.Size = new System.Drawing.Size(575, 37);
             this.textBoxSet.TabIndex = 5;
             this.textBoxSet.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSet_KeyDown);
@@ -195,6 +197,7 @@
             // 
             this.BelongInt.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BelongInt.Location = new System.Drawing.Point(25, 649);
+            this.BelongInt.MaxLength = 1;
             this.BelongInt.Name = "BelongInt";
             this.BelongInt.Size = new System.Drawing.Size(106, 37);
             this.BelongInt.TabIndex = 28;
@@ -216,6 +219,7 @@
             this.InclusionSet2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.InclusionSet2.FormattingEnabled = true;
             this.InclusionSet2.Location = new System.Drawing.Point(172, 592);
+            this.InclusionSet2.MaxLength = 1;
             this.InclusionSet2.Name = "InclusionSet2";
             this.InclusionSet2.Size = new System.Drawing.Size(106, 38);
             this.InclusionSet2.Sorted = true;
@@ -228,6 +232,7 @@
             this.InclusionSet1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.InclusionSet1.FormattingEnabled = true;
             this.InclusionSet1.Location = new System.Drawing.Point(25, 593);
+            this.InclusionSet1.MaxLength = 1;
             this.InclusionSet1.Name = "InclusionSet1";
             this.InclusionSet1.Size = new System.Drawing.Size(106, 38);
             this.InclusionSet1.Sorted = true;
@@ -240,6 +245,7 @@
             this.BelongSet.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BelongSet.FormattingEnabled = true;
             this.BelongSet.Location = new System.Drawing.Point(172, 648);
+            this.BelongSet.MaxLength = 1;
             this.BelongSet.Name = "BelongSet";
             this.BelongSet.Size = new System.Drawing.Size(106, 38);
             this.BelongSet.Sorted = true;
@@ -263,6 +269,7 @@
             this.InclusionResult.Location = new System.Drawing.Point(319, 594);
             this.InclusionResult.Name = "InclusionResult";
             this.InclusionResult.ReadOnly = true;
+            this.InclusionResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.InclusionResult.Size = new System.Drawing.Size(106, 37);
             this.InclusionResult.TabIndex = 27;
             // 
@@ -272,6 +279,7 @@
             this.BelongsResult.Location = new System.Drawing.Point(319, 648);
             this.BelongsResult.Name = "BelongsResult";
             this.BelongsResult.ReadOnly = true;
+            this.BelongsResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.BelongsResult.Size = new System.Drawing.Size(106, 37);
             this.BelongsResult.TabIndex = 30;
             // 
@@ -281,6 +289,7 @@
             this.UnionResult.Location = new System.Drawing.Point(319, 317);
             this.UnionResult.Name = "UnionResult";
             this.UnionResult.ReadOnly = true;
+            this.UnionResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.UnionResult.Size = new System.Drawing.Size(575, 37);
             this.UnionResult.TabIndex = 13;
             this.UnionResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -310,6 +319,7 @@
             this.UnionSet1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UnionSet1.FormattingEnabled = true;
             this.UnionSet1.Location = new System.Drawing.Point(25, 316);
+            this.UnionSet1.MaxLength = 1;
             this.UnionSet1.Name = "UnionSet1";
             this.UnionSet1.Size = new System.Drawing.Size(106, 38);
             this.UnionSet1.Sorted = true;
@@ -322,6 +332,7 @@
             this.UnionSet2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UnionSet2.FormattingEnabled = true;
             this.UnionSet2.Location = new System.Drawing.Point(173, 316);
+            this.UnionSet2.MaxLength = 1;
             this.UnionSet2.Name = "UnionSet2";
             this.UnionSet2.Size = new System.Drawing.Size(106, 38);
             this.UnionSet2.Sorted = true;
@@ -343,6 +354,7 @@
             this.AdditionSet.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AdditionSet.FormattingEnabled = true;
             this.AdditionSet.Location = new System.Drawing.Point(173, 539);
+            this.AdditionSet.MaxLength = 1;
             this.AdditionSet.Name = "AdditionSet";
             this.AdditionSet.Size = new System.Drawing.Size(106, 38);
             this.AdditionSet.Sorted = true;
@@ -366,6 +378,7 @@
             this.AdditionResult.Location = new System.Drawing.Point(319, 540);
             this.AdditionResult.Name = "AdditionResult";
             this.AdditionResult.ReadOnly = true;
+            this.AdditionResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.AdditionResult.Size = new System.Drawing.Size(575, 37);
             this.AdditionResult.TabIndex = 24;
             this.AdditionResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -385,6 +398,7 @@
             this.CrossSet2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CrossSet2.FormattingEnabled = true;
             this.CrossSet2.Location = new System.Drawing.Point(173, 372);
+            this.CrossSet2.MaxLength = 1;
             this.CrossSet2.Name = "CrossSet2";
             this.CrossSet2.Size = new System.Drawing.Size(106, 38);
             this.CrossSet2.Sorted = true;
@@ -397,6 +411,7 @@
             this.CrossSet1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CrossSet1.FormattingEnabled = true;
             this.CrossSet1.Location = new System.Drawing.Point(25, 372);
+            this.CrossSet1.MaxLength = 1;
             this.CrossSet1.Name = "CrossSet1";
             this.CrossSet1.Size = new System.Drawing.Size(106, 38);
             this.CrossSet1.Sorted = true;
@@ -410,6 +425,7 @@
             this.CrossResult.Location = new System.Drawing.Point(319, 373);
             this.CrossResult.Name = "CrossResult";
             this.CrossResult.ReadOnly = true;
+            this.CrossResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.CrossResult.Size = new System.Drawing.Size(575, 37);
             this.CrossResult.TabIndex = 16;
             this.CrossResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -429,6 +445,7 @@
             this.DiffSet2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.DiffSet2.FormattingEnabled = true;
             this.DiffSet2.Location = new System.Drawing.Point(173, 427);
+            this.DiffSet2.MaxLength = 1;
             this.DiffSet2.Name = "DiffSet2";
             this.DiffSet2.Size = new System.Drawing.Size(106, 38);
             this.DiffSet2.Sorted = true;
@@ -441,6 +458,7 @@
             this.DiffSet1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.DiffSet1.FormattingEnabled = true;
             this.DiffSet1.Location = new System.Drawing.Point(25, 427);
+            this.DiffSet1.MaxLength = 1;
             this.DiffSet1.Name = "DiffSet1";
             this.DiffSet1.Size = new System.Drawing.Size(106, 38);
             this.DiffSet1.Sorted = true;
@@ -454,6 +472,7 @@
             this.DiffResult.Location = new System.Drawing.Point(319, 428);
             this.DiffResult.Name = "DiffResult";
             this.DiffResult.ReadOnly = true;
+            this.DiffResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.DiffResult.Size = new System.Drawing.Size(575, 37);
             this.DiffResult.TabIndex = 19;
             this.DiffResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -473,6 +492,7 @@
             this.SymmDiffSet2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SymmDiffSet2.FormattingEnabled = true;
             this.SymmDiffSet2.Location = new System.Drawing.Point(173, 483);
+            this.SymmDiffSet2.MaxLength = 1;
             this.SymmDiffSet2.Name = "SymmDiffSet2";
             this.SymmDiffSet2.Size = new System.Drawing.Size(106, 38);
             this.SymmDiffSet2.Sorted = true;
@@ -485,6 +505,7 @@
             this.SymmDiffSet1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SymmDiffSet1.FormattingEnabled = true;
             this.SymmDiffSet1.Location = new System.Drawing.Point(25, 483);
+            this.SymmDiffSet1.MaxLength = 1;
             this.SymmDiffSet1.Name = "SymmDiffSet1";
             this.SymmDiffSet1.Size = new System.Drawing.Size(106, 38);
             this.SymmDiffSet1.Sorted = true;
@@ -498,6 +519,7 @@
             this.SymmDiffResult.Location = new System.Drawing.Point(319, 484);
             this.SymmDiffResult.Name = "SymmDiffResult";
             this.SymmDiffResult.ReadOnly = true;
+            this.SymmDiffResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.SymmDiffResult.Size = new System.Drawing.Size(575, 37);
             this.SymmDiffResult.TabIndex = 22;
             this.SymmDiffResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -536,7 +558,6 @@
             this.numericUpDown1.Size = new System.Drawing.Size(84, 31);
             this.numericUpDown1.TabIndex = 8;
             this.numericUpDown1.Tag = "";
-            this.numericUpDown1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown1_KeyDown);
             // 
             // Form1
             // 
