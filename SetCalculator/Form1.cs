@@ -1,7 +1,4 @@
-using System.Linq;
-using System.Linq.Expressions;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
 
 namespace SetCalculator
 {
@@ -53,22 +50,17 @@ namespace SetCalculator
                 Regex regexNumber = new Regex("^ *-?[1-9][0-9]* *$");
                 Regex regexNull = new Regex("^ *0 *$");
                 Regex regexRange = new Regex("^ *-?[1-9][0-9]* *_ *-?[1-9][0-9]* *$");
-                for (int i = 0; i < strNumbers.Length; ++i)
-                {
-                    if (!regexNumber.IsMatch(strNumbers[i]) && !regexRange.IsMatch(strNumbers[i]) && !regexNull.IsMatch(strNumbers[i]))
-                    {
-                        throw new Exception("Ошибка задания множества");
-                    }
-                    strNumbers[i] = strNumbers[i].Replace(" ", "");
-                }
+
                 for (int i = 0; i < strNumbers.Length; ++i)
                 {
                     if (regexNumber.IsMatch(strNumbers[i]) || regexNull.IsMatch(strNumbers[i]))
                     {
+                        strNumbers[i] = strNumbers[i].Replace(" ", "");
                         FuncTool.IgnoreExc<ArgumentException>(() => set.AddItem(Int32.Parse(strNumbers[i])));
                     }
-                    else
+                    else if (regexRange.IsMatch(strNumbers[i]))
                     {
+                        strNumbers[i] = strNumbers[i].Replace(" ", "");
                         string[] tmp = strNumbers[i].Split("_");
                         int start = Int32.Parse(tmp[0]);
                         int end = Int32.Parse(tmp[1]);
@@ -83,6 +75,10 @@ namespace SetCalculator
                                 set.AddItem(j);
                             }
                         }
+                    }
+                    else
+                    {
+                        throw new Exception("Ошибка задания множества");
                     }
                 }
             }
@@ -137,61 +133,6 @@ namespace SetCalculator
 
         #endregion
 
-        #region DoAct
-
-        private void DoAct(ref TextBox answer, ComboBox source1, ComboBox source2, BinaryAct action)
-        {
-            answer.Text = "";
-            string key1 = source1.Text;
-            string key2 = source2.Text;
-            if (Univers.ContainsKey(key1) && Univers.ContainsKey(key2))
-                answer.Text = action(Univers[key1], Univers[key2]).ToString();
-            else if (key1 == "U" && Univers.ContainsKey(key2))
-                answer.Text = action(Univers, Univers[key2]).ToString();
-            else if (Univers.ContainsKey(key1) && key2 == "U")
-                answer.Text = action(Univers[key1], Univers).ToString();
-            else if (key1 == "U" && key2 == "U")
-                answer.Text = action(Univers, Univers).ToString();
-        }
-
-        private void DoAct(ref TextBox answer, ComboBox source, UnaryAct action)
-        {
-            answer.Text = "";
-            string key = source.Text;
-            if (Univers.ContainsKey(key))
-                answer.Text = action(Univers[key]).ToString();
-            else if (key == "U")
-                answer.Text = action(Univers).ToString();
-        }
-
-        private void DoAct(ref TextBox answer, ComboBox source1, ComboBox source2, BoolSetSetAct action)
-        {
-            answer.Text = "";
-            string key1 = source1.Text;
-            string key2 = source2.Text;
-            if (Univers.ContainsKey(key1) && Univers.ContainsKey(key2))
-                answer.Text = action(Univers[key1], Univers[key2]).ToString();
-            else if (key1 == "U" && Univers.ContainsKey(key2))
-                answer.Text = action(Univers, Univers[key2]).ToString();
-            else if (Univers.ContainsKey(key1) && key2 == "U")
-                answer.Text = action(Univers[key1], Univers).ToString();
-            else if (key1 == "U" && key2 == "U")
-                answer.Text = action(Univers, Univers).ToString();
-        }
-
-        private void DoAct(ref TextBox answer, TextBox source1, ComboBox source2, BoolIntSetAct action)
-        {
-            answer.Text = "";
-            bool isParsed = Int32.TryParse(source1.Text, out int number);
-            string key = source2.Text;
-            if (Univers.ContainsKey(key) && isParsed)
-                answer.Text = action(number, Univers[key]).ToString();
-            else if (key == "U" && isParsed)
-                answer.Text = action(number, Univers).ToString();
-        }
-
-        #endregion
-
         #region Universuum buttons
 
         private void buttonApply_Click(object sender, EventArgs e)
@@ -207,14 +148,26 @@ namespace SetCalculator
                 else if (set.IsVoid())
                 {
                     Univers.Clear();
+                    numericUpDown1.Maximum = Univers.Count;
+                    if (Univers.ContainsKey(comboBoxSet.Text))
+                    {
+                        buttonResetSet_Click(sender, e);
+                    }
+                    CalculateAll(sender, e);
+                    MessageBox.Show("Универсуум успешно изменен", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     Univers.ReplaceItemsFrom(set);
                     Univers.Sort();
+                    numericUpDown1.Maximum = Univers.Count;
+                    if (Univers.ContainsKey(comboBoxSet.Text))
+                    {
+                        buttonResetSet_Click(sender, e);
+                    }
+                    CalculateAll(sender, e);
                     MessageBox.Show("Универсуум успешно изменен", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                numericUpDown1.Maximum = Univers.Count;
             }
             catch (OverflowException)
             {
@@ -224,7 +177,10 @@ namespace SetCalculator
             {
                 MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            textBoxUniversuum.Text = Univers.ToStrOnlyItems();
+            finally
+            {
+                buttonReset_Click(sender, e);
+            }
         }
 
         private void buttonReset_Click(object sender, EventArgs e)
@@ -251,17 +207,18 @@ namespace SetCalculator
                 {
                     Univers[key].ReplaceItemsFrom(set);
                     Univers[key].Sort();
+                    CalculateAll(sender, e);
                     MessageBox.Show($"Множество {key} успешно изменено", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     Univers.AddVariableSet(key, set);
                     Univers[key].Sort();
-                    MessageBox.Show($"Множество {key} успешно сохранено", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     foreach (ComboBox box in comboBoxes)
                     {
                         box.Items.Add(key);
                     }
+                    MessageBox.Show($"Множество {key} успешно сохранено", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (ArgumentNullException)
@@ -323,12 +280,17 @@ namespace SetCalculator
             {
                 string key = comboBoxSet.Text;
                 Univers.RemoveVariableSet(key);
-                foreach (ComboBox box in comboBoxes)
+                for (int i = 0; i < comboBoxes.Length; ++i)
                 {
-                    box.Items.Remove(key);
+                    comboBoxes[i].Items.Remove(key);
+                    if (comboBoxes[i].Text == key)
+                    {
+                        comboBoxes[i].Text = "";
+                    }
                 }
                 comboBoxSet.Text = "";
                 textBoxSet.Text = "";
+                CalculateAll(sender, e);
                 MessageBox.Show("Множество успешно удалено", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -356,6 +318,17 @@ namespace SetCalculator
         #endregion
 
         #region Set Actions
+
+        private void CalculateAll(object sender, EventArgs e)
+        {
+            CalculateUnion(sender, e);
+            CalculateCross(sender, e);
+            CalculateDiff(sender, e);
+            CalculateSymmDiff(sender, e);
+            CalculateAddition(sender, e);
+            CalculateInclusion(sender, e);
+            CalculateBelongs(sender, e);
+        }
 
         private void CalculateUnion(object sender, EventArgs e)
         {
@@ -390,6 +363,87 @@ namespace SetCalculator
         private void CalculateBelongs(object sender, EventArgs e)
         {
             DoAct(ref BelongsResult, BelongInt, BelongSet, Set.Belongs);
+        }
+
+        #endregion
+
+        #region DoAct
+
+        private void DoAct(ref TextBox answer, ComboBox source1, ComboBox source2, BinaryAct action)
+        {
+            answer.Text = "";
+            string key1 = source1.Text;
+            string key2 = source2.Text;
+            if (Univers.ContainsKey(key1) && Univers.ContainsKey(key2))
+            {
+                Set set = action(Univers[key1], Univers[key2]);
+                set.Sort();
+                answer.Text = set.ToStrOnlyItems();
+            }
+            else if (key1 == "U" && Univers.ContainsKey(key2))
+            {
+                Set set = action(Univers, Univers[key2]);
+                set.Sort();
+                answer.Text = set.ToStrOnlyItems();
+            }
+            else if (Univers.ContainsKey(key1) && key2 == "U")
+            {
+                Set set = action(Univers[key1], Univers);
+                set.Sort();
+                answer.Text = set.ToStrOnlyItems();
+            }
+            else if (key1 == "U" && key2 == "U")
+            {
+                Set set = action(Univers, Univers);
+                set.Sort();
+                answer.Text = set.ToStrOnlyItems();
+            }
+        }
+
+        private void DoAct(ref TextBox answer, ComboBox source, UnaryAct action)
+        {
+            answer.Text = "";
+            string key = source.Text;
+            if (Univers.ContainsKey(key))
+            {
+                Set set = action(Univers[key]);
+                set.Sort();
+                answer.Text = set.ToStrOnlyItems();
+            }
+            else if (key == "U")
+            {
+                {
+                    Set set = action(Univers);
+                    set.Sort();
+                    answer.Text = set.ToStrOnlyItems();
+                }
+            }
+        }
+
+        private void DoAct(ref TextBox answer, ComboBox source1, ComboBox source2, BoolSetSetAct action)
+        {
+            answer.Text = "";
+            string key1 = source1.Text;
+            string key2 = source2.Text;
+            if (Univers.ContainsKey(key1) && Univers.ContainsKey(key2))
+                answer.Text = action(Univers[key1], Univers[key2]).ToString();
+            else if (key1 == "U" && Univers.ContainsKey(key2))
+                answer.Text = action(Univers, Univers[key2]).ToString();
+            else if (Univers.ContainsKey(key1) && key2 == "U")
+                answer.Text = action(Univers[key1], Univers).ToString();
+            else if (key1 == "U" && key2 == "U")
+                answer.Text = action(Univers, Univers).ToString();
+        }
+
+        private void DoAct(ref TextBox answer, TextBox source1, ComboBox source2, BoolIntSetAct action)
+        {
+            answer.Text = "";
+            bool isParsed = Int32.TryParse(source1.Text, out int number);
+            string key = source2.Text;
+            if (Univers.ContainsKey(key) && isParsed)
+                answer.Text = action(number, Univers[key]).ToString();
+            else if (key == "U" && isParsed)
+                answer.Text = action(number, Univers).ToString();
         }
 
         #endregion

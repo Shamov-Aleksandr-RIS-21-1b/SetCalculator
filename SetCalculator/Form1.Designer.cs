@@ -166,7 +166,7 @@
             // 
             this.labelSet.AutoSize = true;
             this.labelSet.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelSet.Location = new System.Drawing.Point(120, 180);
+            this.labelSet.Location = new System.Drawing.Point(120, 178);
             this.labelSet.Name = "labelSet";
             this.labelSet.Size = new System.Drawing.Size(652, 38);
             this.labelSet.TabIndex = 0;
@@ -197,7 +197,7 @@
             // 
             this.BelongInt.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BelongInt.Location = new System.Drawing.Point(25, 649);
-            this.BelongInt.MaxLength = 1;
+            this.BelongInt.MaxLength = 0;
             this.BelongInt.Name = "BelongInt";
             this.BelongInt.Size = new System.Drawing.Size(106, 37);
             this.BelongInt.TabIndex = 28;
@@ -368,9 +368,10 @@
             this.label7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.Location = new System.Drawing.Point(285, 542);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 30);
+            this.label7.Size = new System.Drawing.Size(630, 30);
             this.label7.TabIndex = 0;
-            this.label7.Text = "=";
+            this.label7.Text = "= {                                                                              " +
+    "                   }";
             // 
             // AdditionResult
             // 
@@ -389,9 +390,10 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(137, 320);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(175, 30);
+            this.label3.Size = new System.Drawing.Size(777, 30);
             this.label3.TabIndex = 0;
-            this.label3.Text = "⋃                      =";
+            this.label3.Text = "⋃                      = {                                                       " +
+    "                                          }";
             // 
             // CrossSet2
             // 
@@ -436,9 +438,10 @@
             this.label8.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.Location = new System.Drawing.Point(137, 376);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(175, 30);
+            this.label8.Size = new System.Drawing.Size(777, 30);
             this.label8.TabIndex = 0;
-            this.label8.Text = "∩                      =";
+            this.label8.Text = "∩                      = {                                                       " +
+    "                                          }";
             // 
             // DiffSet2
             // 
@@ -483,9 +486,10 @@
             this.label9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.Location = new System.Drawing.Point(137, 431);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(174, 30);
+            this.label9.Size = new System.Drawing.Size(776, 30);
             this.label9.TabIndex = 0;
-            this.label9.Text = " \\                      =";
+            this.label9.Text = " \\                      = {                                                      " +
+    "                                           }";
             // 
             // SymmDiffSet2
             // 
@@ -530,9 +534,10 @@
             this.label10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label10.Location = new System.Drawing.Point(137, 487);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(174, 30);
+            this.label10.Size = new System.Drawing.Size(776, 30);
             this.label10.TabIndex = 0;
-            this.label10.Text = "Δ                      =";
+            this.label10.Text = "Δ                      = {                                                       " +
+    "                                          }";
             // 
             // buttonRandomInit
             // 
@@ -563,6 +568,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(922, 695);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.buttonRandomInit);
@@ -608,8 +614,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "3";
+            this.ShowIcon = false;
+            this.Text = "Калькулятор Множеств";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
