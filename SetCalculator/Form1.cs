@@ -12,24 +12,24 @@ namespace SetCalculator
             {
                 comboBoxSet,
 
-                UnionSet1,
-                UnionSet2,
+                unionSet1,
+                unionSet2,
 
-                CrossSet1,
-                CrossSet2,
+                crossSet1,
+                crossSet2,
 
-                DiffSet1,
-                DiffSet2,
+                diffSet1,
+                diffSet2,
 
-                SymmDiffSet1,
-                SymmDiffSet2,
+                symmDiffSet1,
+                symmDiffSet2,
 
-                AdditionSet,
+                additionSet,
 
-                InclusionSet1,
-                InclusionSet2,
+                inclusionSet1,
+                inclusionSet2,
 
-                BelongSet,
+                belongSet,
             };
             for (int i = 1; i < comboBoxes.Length; ++i)
             {
@@ -91,7 +91,7 @@ namespace SetCalculator
         {
             textBoxSet.Enabled = true;
             buttonSaveSet.Enabled = true;
-            buttonResetSet.Enabled = true;
+            buttonRefreshSet.Enabled = true;
             numericUpDown1.Enabled = true;
             buttonRandomInit.Enabled = true;
             buttonDeleteSet.Enabled = true;
@@ -101,7 +101,7 @@ namespace SetCalculator
         {
             textBoxSet.Enabled = false;
             buttonSaveSet.Enabled = false;
-            buttonResetSet.Enabled = false;
+            buttonRefreshSet.Enabled = false;
             numericUpDown1.Enabled = false;
             buttonRandomInit.Enabled = false;
             buttonDeleteSet.Enabled = false;
@@ -135,6 +135,21 @@ namespace SetCalculator
 
         #region Universuum buttons
 
+        private void deletedUniversumEvent(object sender, EventArgs e)
+        {
+            Univers.Clear();
+            numericUpDown1.Maximum = Univers.Count;
+            CalculateAll(sender, e);
+            DisableSets();
+            foreach (ComboBox box in comboBoxes)
+            {
+                box.Items.Clear();
+                box.Text = "";
+            }
+            textBoxSet.Text = "";
+            belongInt.Text = "";
+        }
+
         private void buttonApply_Click(object sender, EventArgs e)
         {
             Set set = new Set();
@@ -147,13 +162,7 @@ namespace SetCalculator
                 }
                 else if (set.IsVoid())
                 {
-                    Univers.Clear();
-                    numericUpDown1.Maximum = Univers.Count;
-                    if (Univers.ContainsKey(comboBoxSet.Text))
-                    {
-                        buttonResetSet_Click(sender, e);
-                    }
-                    CalculateAll(sender, e);
+                    deletedUniversumEvent(sender, e);
                     MessageBox.Show("Универсуум успешно изменен", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -163,7 +172,7 @@ namespace SetCalculator
                     numericUpDown1.Maximum = Univers.Count;
                     if (Univers.ContainsKey(comboBoxSet.Text))
                     {
-                        buttonResetSet_Click(sender, e);
+                        buttonRefreshSet_Click(sender, e);
                     }
                     CalculateAll(sender, e);
                     MessageBox.Show("Универсуум успешно изменен", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -179,11 +188,11 @@ namespace SetCalculator
             }
             finally
             {
-                buttonReset_Click(sender, e);
+                buttonRefresh_Click(sender, e);
             }
         }
 
-        private void buttonReset_Click(object sender, EventArgs e)
+        private void buttonRefresh_Click(object sender, EventArgs e)
         {
             textBoxUniversuum.Text = Univers.ToStrOnlyItems();
         }
@@ -240,7 +249,7 @@ namespace SetCalculator
             }
         }
 
-        private void buttonResetSet_Click(object sender, EventArgs e)
+        private void buttonRefreshSet_Click(object sender, EventArgs e)
         {
             if (comboBoxSet.Text == "")
             {
@@ -262,6 +271,7 @@ namespace SetCalculator
             try
             {
                 randSet = Set.RandomInit(Univers, (int)numericUpDown1.Value);
+                randSet.Sort();
                 textBoxSet.Text = randSet.ToStrOnlyItems();
             }
             catch (Exception ex)
@@ -332,37 +342,37 @@ namespace SetCalculator
 
         private void CalculateUnion(object sender, EventArgs e)
         {
-            DoAct(ref UnionResult, UnionSet1, UnionSet2, Set.Union);
+            DoAct(ref unionResult, unionSet1, unionSet2, Set.Union);
         }
 
         private void CalculateCross(object sender, EventArgs e)
         {
-            DoAct(ref CrossResult, CrossSet1, CrossSet2, Set.Cross);
+            DoAct(ref crossResult, crossSet1, crossSet2, Set.Cross);
         }
 
         private void CalculateDiff(object sender, EventArgs e)
         {
-            DoAct(ref DiffResult, DiffSet1, DiffSet2, Set.Diff);
+            DoAct(ref diffResult, diffSet1, diffSet2, Set.Diff);
         }
 
         private void CalculateSymmDiff(object sender, EventArgs e)
         {
-            DoAct(ref SymmDiffResult, SymmDiffSet1, SymmDiffSet2, Set.SymDiff);
+            DoAct(ref symmDiffResult, symmDiffSet1, symmDiffSet2, Set.SymDiff);
         }
 
         private void CalculateAddition(object sender, EventArgs e)
         {
-            DoAct(ref AdditionResult, AdditionSet, Set.Addition);
+            DoAct(ref additionResult, additionSet, Set.Addition);
         }
 
         private void CalculateInclusion(object sender, EventArgs e)
         {
-            DoAct(ref InclusionResult, InclusionSet1, InclusionSet2, Set.Inclusion);
+            DoAct(ref inclusionResult, inclusionSet1, inclusionSet2, Set.Inclusion);
         }
 
         private void CalculateBelongs(object sender, EventArgs e)
         {
-            DoAct(ref BelongsResult, BelongInt, BelongSet, Set.Belongs);
+            DoAct(ref belongsResult, belongInt, belongSet, Set.Belongs);
         }
 
         #endregion

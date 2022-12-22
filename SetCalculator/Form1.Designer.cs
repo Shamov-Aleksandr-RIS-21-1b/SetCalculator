@@ -31,43 +31,43 @@
             this.buttonSaveSet = new System.Windows.Forms.Button();
             this.labelUniversuum = new System.Windows.Forms.Label();
             this.buttonApplyUniversuum = new System.Windows.Forms.Button();
-            this.buttonReset = new System.Windows.Forms.Button();
+            this.buttonRefresh = new System.Windows.Forms.Button();
             this.comboBoxSet = new System.Windows.Forms.ComboBox();
-            this.buttonResetSet = new System.Windows.Forms.Button();
+            this.buttonRefreshSet = new System.Windows.Forms.Button();
             this.textBoxUniversuum = new System.Windows.Forms.TextBox();
             this.textBoxSet = new System.Windows.Forms.TextBox();
             this.labelSet = new System.Windows.Forms.Label();
             this.buttonDeleteSet = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.BelongInt = new System.Windows.Forms.TextBox();
+            this.belongInt = new System.Windows.Forms.TextBox();
             this.labelInclusion = new System.Windows.Forms.Label();
-            this.InclusionSet2 = new System.Windows.Forms.ComboBox();
-            this.InclusionSet1 = new System.Windows.Forms.ComboBox();
-            this.BelongSet = new System.Windows.Forms.ComboBox();
+            this.inclusionSet2 = new System.Windows.Forms.ComboBox();
+            this.inclusionSet1 = new System.Windows.Forms.ComboBox();
+            this.belongSet = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.InclusionResult = new System.Windows.Forms.TextBox();
-            this.BelongsResult = new System.Windows.Forms.TextBox();
-            this.UnionResult = new System.Windows.Forms.TextBox();
+            this.inclusionResult = new System.Windows.Forms.TextBox();
+            this.belongsResult = new System.Windows.Forms.TextBox();
+            this.unionResult = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.UnionSet1 = new System.Windows.Forms.ComboBox();
-            this.UnionSet2 = new System.Windows.Forms.ComboBox();
+            this.unionSet1 = new System.Windows.Forms.ComboBox();
+            this.unionSet2 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.AdditionSet = new System.Windows.Forms.ComboBox();
+            this.additionSet = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.AdditionResult = new System.Windows.Forms.TextBox();
+            this.additionResult = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.CrossSet2 = new System.Windows.Forms.ComboBox();
-            this.CrossSet1 = new System.Windows.Forms.ComboBox();
-            this.CrossResult = new System.Windows.Forms.TextBox();
+            this.crossSet2 = new System.Windows.Forms.ComboBox();
+            this.crossSet1 = new System.Windows.Forms.ComboBox();
+            this.crossResult = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.DiffSet2 = new System.Windows.Forms.ComboBox();
-            this.DiffSet1 = new System.Windows.Forms.ComboBox();
-            this.DiffResult = new System.Windows.Forms.TextBox();
+            this.diffSet2 = new System.Windows.Forms.ComboBox();
+            this.diffSet1 = new System.Windows.Forms.ComboBox();
+            this.diffResult = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.SymmDiffSet2 = new System.Windows.Forms.ComboBox();
-            this.SymmDiffSet1 = new System.Windows.Forms.ComboBox();
-            this.SymmDiffResult = new System.Windows.Forms.TextBox();
+            this.symmDiffSet2 = new System.Windows.Forms.ComboBox();
+            this.symmDiffSet1 = new System.Windows.Forms.ComboBox();
+            this.symmDiffResult = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.buttonRandomInit = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -105,16 +105,16 @@
             this.buttonApplyUniversuum.UseVisualStyleBackColor = true;
             this.buttonApplyUniversuum.Click += new System.EventHandler(this.buttonApply_Click);
             // 
-            // buttonReset
+            // buttonRefresh
             // 
-            this.buttonReset.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonReset.Location = new System.Drawing.Point(290, 92);
-            this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(110, 38);
-            this.buttonReset.TabIndex = 3;
-            this.buttonReset.Text = "Обновить";
-            this.buttonReset.UseVisualStyleBackColor = true;
-            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            this.buttonRefresh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonRefresh.Location = new System.Drawing.Point(290, 92);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(110, 38);
+            this.buttonRefresh.TabIndex = 3;
+            this.buttonRefresh.Text = "Обновить";
+            this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
             // comboBoxSet
             // 
@@ -129,17 +129,17 @@
             this.comboBoxSet.SelectedIndexChanged += new System.EventHandler(this.comboBoxSet_SelectedIndexChanged);
             this.comboBoxSet.TextUpdate += new System.EventHandler(this.comboBoxSet_TextUpdate);
             // 
-            // buttonResetSet
+            // buttonRefreshSet
             // 
-            this.buttonResetSet.Enabled = false;
-            this.buttonResetSet.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonResetSet.Location = new System.Drawing.Point(290, 225);
-            this.buttonResetSet.Name = "buttonResetSet";
-            this.buttonResetSet.Size = new System.Drawing.Size(110, 38);
-            this.buttonResetSet.TabIndex = 7;
-            this.buttonResetSet.Text = "Обновить";
-            this.buttonResetSet.UseVisualStyleBackColor = true;
-            this.buttonResetSet.Click += new System.EventHandler(this.buttonResetSet_Click);
+            this.buttonRefreshSet.Enabled = false;
+            this.buttonRefreshSet.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonRefreshSet.Location = new System.Drawing.Point(290, 225);
+            this.buttonRefreshSet.Name = "buttonRefreshSet";
+            this.buttonRefreshSet.Size = new System.Drawing.Size(110, 38);
+            this.buttonRefreshSet.TabIndex = 7;
+            this.buttonRefreshSet.Text = "Обновить";
+            this.buttonRefreshSet.UseVisualStyleBackColor = true;
+            this.buttonRefreshSet.Click += new System.EventHandler(this.buttonRefreshSet_Click);
             // 
             // textBoxUniversuum
             // 
@@ -193,16 +193,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Операции с множествами:";
             // 
-            // BelongInt
+            // belongInt
             // 
-            this.BelongInt.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BelongInt.Location = new System.Drawing.Point(25, 649);
-            this.BelongInt.MaxLength = 0;
-            this.BelongInt.Name = "BelongInt";
-            this.BelongInt.Size = new System.Drawing.Size(106, 37);
-            this.BelongInt.TabIndex = 28;
-            this.BelongInt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.BelongInt.TextChanged += new System.EventHandler(this.CalculateBelongs);
+            this.belongInt.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.belongInt.Location = new System.Drawing.Point(25, 649);
+            this.belongInt.MaxLength = 0;
+            this.belongInt.Name = "belongInt";
+            this.belongInt.Size = new System.Drawing.Size(106, 37);
+            this.belongInt.TabIndex = 28;
+            this.belongInt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.belongInt.TextChanged += new System.EventHandler(this.CalculateBelongs);
             // 
             // labelInclusion
             // 
@@ -214,44 +214,44 @@
             this.labelInclusion.TabIndex = 0;
             this.labelInclusion.Text = "⊆                      =";
             // 
-            // InclusionSet2
+            // inclusionSet2
             // 
-            this.InclusionSet2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.InclusionSet2.FormattingEnabled = true;
-            this.InclusionSet2.Location = new System.Drawing.Point(172, 592);
-            this.InclusionSet2.MaxLength = 1;
-            this.InclusionSet2.Name = "InclusionSet2";
-            this.InclusionSet2.Size = new System.Drawing.Size(106, 38);
-            this.InclusionSet2.Sorted = true;
-            this.InclusionSet2.TabIndex = 26;
-            this.InclusionSet2.SelectedIndexChanged += new System.EventHandler(this.CalculateInclusion);
-            this.InclusionSet2.TextUpdate += new System.EventHandler(this.CalculateInclusion);
+            this.inclusionSet2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.inclusionSet2.FormattingEnabled = true;
+            this.inclusionSet2.Location = new System.Drawing.Point(172, 592);
+            this.inclusionSet2.MaxLength = 1;
+            this.inclusionSet2.Name = "inclusionSet2";
+            this.inclusionSet2.Size = new System.Drawing.Size(106, 38);
+            this.inclusionSet2.Sorted = true;
+            this.inclusionSet2.TabIndex = 26;
+            this.inclusionSet2.SelectedIndexChanged += new System.EventHandler(this.CalculateInclusion);
+            this.inclusionSet2.TextUpdate += new System.EventHandler(this.CalculateInclusion);
             // 
-            // InclusionSet1
+            // inclusionSet1
             // 
-            this.InclusionSet1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.InclusionSet1.FormattingEnabled = true;
-            this.InclusionSet1.Location = new System.Drawing.Point(25, 593);
-            this.InclusionSet1.MaxLength = 1;
-            this.InclusionSet1.Name = "InclusionSet1";
-            this.InclusionSet1.Size = new System.Drawing.Size(106, 38);
-            this.InclusionSet1.Sorted = true;
-            this.InclusionSet1.TabIndex = 25;
-            this.InclusionSet1.SelectedIndexChanged += new System.EventHandler(this.CalculateInclusion);
-            this.InclusionSet1.TextUpdate += new System.EventHandler(this.CalculateInclusion);
+            this.inclusionSet1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.inclusionSet1.FormattingEnabled = true;
+            this.inclusionSet1.Location = new System.Drawing.Point(25, 593);
+            this.inclusionSet1.MaxLength = 1;
+            this.inclusionSet1.Name = "inclusionSet1";
+            this.inclusionSet1.Size = new System.Drawing.Size(106, 38);
+            this.inclusionSet1.Sorted = true;
+            this.inclusionSet1.TabIndex = 25;
+            this.inclusionSet1.SelectedIndexChanged += new System.EventHandler(this.CalculateInclusion);
+            this.inclusionSet1.TextUpdate += new System.EventHandler(this.CalculateInclusion);
             // 
-            // BelongSet
+            // belongSet
             // 
-            this.BelongSet.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BelongSet.FormattingEnabled = true;
-            this.BelongSet.Location = new System.Drawing.Point(172, 648);
-            this.BelongSet.MaxLength = 1;
-            this.BelongSet.Name = "BelongSet";
-            this.BelongSet.Size = new System.Drawing.Size(106, 38);
-            this.BelongSet.Sorted = true;
-            this.BelongSet.TabIndex = 29;
-            this.BelongSet.SelectedIndexChanged += new System.EventHandler(this.CalculateBelongs);
-            this.BelongSet.TextUpdate += new System.EventHandler(this.CalculateBelongs);
+            this.belongSet.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.belongSet.FormattingEnabled = true;
+            this.belongSet.Location = new System.Drawing.Point(172, 648);
+            this.belongSet.MaxLength = 1;
+            this.belongSet.Name = "belongSet";
+            this.belongSet.Size = new System.Drawing.Size(106, 38);
+            this.belongSet.Sorted = true;
+            this.belongSet.TabIndex = 29;
+            this.belongSet.SelectedIndexChanged += new System.EventHandler(this.CalculateBelongs);
+            this.belongSet.TextUpdate += new System.EventHandler(this.CalculateBelongs);
             // 
             // label2
             // 
@@ -263,36 +263,36 @@
             this.label2.TabIndex = 31;
             this.label2.Text = "∈                      =";
             // 
-            // InclusionResult
+            // inclusionResult
             // 
-            this.InclusionResult.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.InclusionResult.Location = new System.Drawing.Point(319, 594);
-            this.InclusionResult.Name = "InclusionResult";
-            this.InclusionResult.ReadOnly = true;
-            this.InclusionResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.InclusionResult.Size = new System.Drawing.Size(106, 37);
-            this.InclusionResult.TabIndex = 27;
+            this.inclusionResult.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.inclusionResult.Location = new System.Drawing.Point(319, 594);
+            this.inclusionResult.Name = "inclusionResult";
+            this.inclusionResult.ReadOnly = true;
+            this.inclusionResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.inclusionResult.Size = new System.Drawing.Size(106, 37);
+            this.inclusionResult.TabIndex = 27;
             // 
-            // BelongsResult
+            // belongsResult
             // 
-            this.BelongsResult.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BelongsResult.Location = new System.Drawing.Point(319, 648);
-            this.BelongsResult.Name = "BelongsResult";
-            this.BelongsResult.ReadOnly = true;
-            this.BelongsResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.BelongsResult.Size = new System.Drawing.Size(106, 37);
-            this.BelongsResult.TabIndex = 30;
+            this.belongsResult.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.belongsResult.Location = new System.Drawing.Point(319, 648);
+            this.belongsResult.Name = "belongsResult";
+            this.belongsResult.ReadOnly = true;
+            this.belongsResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.belongsResult.Size = new System.Drawing.Size(106, 37);
+            this.belongsResult.TabIndex = 30;
             // 
-            // UnionResult
+            // unionResult
             // 
-            this.UnionResult.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.UnionResult.Location = new System.Drawing.Point(319, 317);
-            this.UnionResult.Name = "UnionResult";
-            this.UnionResult.ReadOnly = true;
-            this.UnionResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.UnionResult.Size = new System.Drawing.Size(575, 37);
-            this.UnionResult.TabIndex = 13;
-            this.UnionResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.unionResult.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.unionResult.Location = new System.Drawing.Point(319, 317);
+            this.unionResult.Name = "unionResult";
+            this.unionResult.ReadOnly = true;
+            this.unionResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.unionResult.Size = new System.Drawing.Size(575, 37);
+            this.unionResult.TabIndex = 13;
+            this.unionResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
@@ -314,31 +314,31 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Универсум:";
             // 
-            // UnionSet1
+            // unionSet1
             // 
-            this.UnionSet1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.UnionSet1.FormattingEnabled = true;
-            this.UnionSet1.Location = new System.Drawing.Point(25, 316);
-            this.UnionSet1.MaxLength = 1;
-            this.UnionSet1.Name = "UnionSet1";
-            this.UnionSet1.Size = new System.Drawing.Size(106, 38);
-            this.UnionSet1.Sorted = true;
-            this.UnionSet1.TabIndex = 11;
-            this.UnionSet1.SelectedIndexChanged += new System.EventHandler(this.CalculateUnion);
-            this.UnionSet1.TextUpdate += new System.EventHandler(this.CalculateUnion);
+            this.unionSet1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.unionSet1.FormattingEnabled = true;
+            this.unionSet1.Location = new System.Drawing.Point(25, 316);
+            this.unionSet1.MaxLength = 1;
+            this.unionSet1.Name = "unionSet1";
+            this.unionSet1.Size = new System.Drawing.Size(106, 38);
+            this.unionSet1.Sorted = true;
+            this.unionSet1.TabIndex = 11;
+            this.unionSet1.SelectedIndexChanged += new System.EventHandler(this.CalculateUnion);
+            this.unionSet1.TextUpdate += new System.EventHandler(this.CalculateUnion);
             // 
-            // UnionSet2
+            // unionSet2
             // 
-            this.UnionSet2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.UnionSet2.FormattingEnabled = true;
-            this.UnionSet2.Location = new System.Drawing.Point(173, 316);
-            this.UnionSet2.MaxLength = 1;
-            this.UnionSet2.Name = "UnionSet2";
-            this.UnionSet2.Size = new System.Drawing.Size(106, 38);
-            this.UnionSet2.Sorted = true;
-            this.UnionSet2.TabIndex = 12;
-            this.UnionSet2.SelectedIndexChanged += new System.EventHandler(this.CalculateUnion);
-            this.UnionSet2.TextUpdate += new System.EventHandler(this.CalculateUnion);
+            this.unionSet2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.unionSet2.FormattingEnabled = true;
+            this.unionSet2.Location = new System.Drawing.Point(173, 316);
+            this.unionSet2.MaxLength = 1;
+            this.unionSet2.Name = "unionSet2";
+            this.unionSet2.Size = new System.Drawing.Size(106, 38);
+            this.unionSet2.Sorted = true;
+            this.unionSet2.TabIndex = 12;
+            this.unionSet2.SelectedIndexChanged += new System.EventHandler(this.CalculateUnion);
+            this.unionSet2.TextUpdate += new System.EventHandler(this.CalculateUnion);
             // 
             // label6
             // 
@@ -349,18 +349,18 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "_____________";
             // 
-            // AdditionSet
+            // additionSet
             // 
-            this.AdditionSet.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.AdditionSet.FormattingEnabled = true;
-            this.AdditionSet.Location = new System.Drawing.Point(173, 539);
-            this.AdditionSet.MaxLength = 1;
-            this.AdditionSet.Name = "AdditionSet";
-            this.AdditionSet.Size = new System.Drawing.Size(106, 38);
-            this.AdditionSet.Sorted = true;
-            this.AdditionSet.TabIndex = 23;
-            this.AdditionSet.SelectedIndexChanged += new System.EventHandler(this.CalculateAddition);
-            this.AdditionSet.TextUpdate += new System.EventHandler(this.CalculateAddition);
+            this.additionSet.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.additionSet.FormattingEnabled = true;
+            this.additionSet.Location = new System.Drawing.Point(173, 539);
+            this.additionSet.MaxLength = 1;
+            this.additionSet.Name = "additionSet";
+            this.additionSet.Size = new System.Drawing.Size(106, 38);
+            this.additionSet.Sorted = true;
+            this.additionSet.TabIndex = 23;
+            this.additionSet.SelectedIndexChanged += new System.EventHandler(this.CalculateAddition);
+            this.additionSet.TextUpdate += new System.EventHandler(this.CalculateAddition);
             // 
             // label7
             // 
@@ -373,16 +373,16 @@
             this.label7.Text = "= {                                                                              " +
     "                   }";
             // 
-            // AdditionResult
+            // additionResult
             // 
-            this.AdditionResult.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.AdditionResult.Location = new System.Drawing.Point(319, 540);
-            this.AdditionResult.Name = "AdditionResult";
-            this.AdditionResult.ReadOnly = true;
-            this.AdditionResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.AdditionResult.Size = new System.Drawing.Size(575, 37);
-            this.AdditionResult.TabIndex = 24;
-            this.AdditionResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.additionResult.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.additionResult.Location = new System.Drawing.Point(319, 540);
+            this.additionResult.Name = "additionResult";
+            this.additionResult.ReadOnly = true;
+            this.additionResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.additionResult.Size = new System.Drawing.Size(575, 37);
+            this.additionResult.TabIndex = 24;
+            this.additionResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -395,42 +395,42 @@
             this.label3.Text = "⋃                      = {                                                       " +
     "                                          }";
             // 
-            // CrossSet2
+            // crossSet2
             // 
-            this.CrossSet2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CrossSet2.FormattingEnabled = true;
-            this.CrossSet2.Location = new System.Drawing.Point(173, 372);
-            this.CrossSet2.MaxLength = 1;
-            this.CrossSet2.Name = "CrossSet2";
-            this.CrossSet2.Size = new System.Drawing.Size(106, 38);
-            this.CrossSet2.Sorted = true;
-            this.CrossSet2.TabIndex = 15;
-            this.CrossSet2.SelectedIndexChanged += new System.EventHandler(this.CalculateCross);
-            this.CrossSet2.TextUpdate += new System.EventHandler(this.CalculateCross);
+            this.crossSet2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.crossSet2.FormattingEnabled = true;
+            this.crossSet2.Location = new System.Drawing.Point(173, 372);
+            this.crossSet2.MaxLength = 1;
+            this.crossSet2.Name = "crossSet2";
+            this.crossSet2.Size = new System.Drawing.Size(106, 38);
+            this.crossSet2.Sorted = true;
+            this.crossSet2.TabIndex = 15;
+            this.crossSet2.SelectedIndexChanged += new System.EventHandler(this.CalculateCross);
+            this.crossSet2.TextUpdate += new System.EventHandler(this.CalculateCross);
             // 
-            // CrossSet1
+            // crossSet1
             // 
-            this.CrossSet1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CrossSet1.FormattingEnabled = true;
-            this.CrossSet1.Location = new System.Drawing.Point(25, 372);
-            this.CrossSet1.MaxLength = 1;
-            this.CrossSet1.Name = "CrossSet1";
-            this.CrossSet1.Size = new System.Drawing.Size(106, 38);
-            this.CrossSet1.Sorted = true;
-            this.CrossSet1.TabIndex = 14;
-            this.CrossSet1.SelectedIndexChanged += new System.EventHandler(this.CalculateCross);
-            this.CrossSet1.TextUpdate += new System.EventHandler(this.CalculateCross);
+            this.crossSet1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.crossSet1.FormattingEnabled = true;
+            this.crossSet1.Location = new System.Drawing.Point(25, 372);
+            this.crossSet1.MaxLength = 1;
+            this.crossSet1.Name = "crossSet1";
+            this.crossSet1.Size = new System.Drawing.Size(106, 38);
+            this.crossSet1.Sorted = true;
+            this.crossSet1.TabIndex = 14;
+            this.crossSet1.SelectedIndexChanged += new System.EventHandler(this.CalculateCross);
+            this.crossSet1.TextUpdate += new System.EventHandler(this.CalculateCross);
             // 
-            // CrossResult
+            // crossResult
             // 
-            this.CrossResult.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CrossResult.Location = new System.Drawing.Point(319, 373);
-            this.CrossResult.Name = "CrossResult";
-            this.CrossResult.ReadOnly = true;
-            this.CrossResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.CrossResult.Size = new System.Drawing.Size(575, 37);
-            this.CrossResult.TabIndex = 16;
-            this.CrossResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.crossResult.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.crossResult.Location = new System.Drawing.Point(319, 373);
+            this.crossResult.Name = "crossResult";
+            this.crossResult.ReadOnly = true;
+            this.crossResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.crossResult.Size = new System.Drawing.Size(575, 37);
+            this.crossResult.TabIndex = 16;
+            this.crossResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label8
             // 
@@ -443,42 +443,42 @@
             this.label8.Text = "∩                      = {                                                       " +
     "                                          }";
             // 
-            // DiffSet2
+            // diffSet2
             // 
-            this.DiffSet2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DiffSet2.FormattingEnabled = true;
-            this.DiffSet2.Location = new System.Drawing.Point(173, 427);
-            this.DiffSet2.MaxLength = 1;
-            this.DiffSet2.Name = "DiffSet2";
-            this.DiffSet2.Size = new System.Drawing.Size(106, 38);
-            this.DiffSet2.Sorted = true;
-            this.DiffSet2.TabIndex = 18;
-            this.DiffSet2.SelectedIndexChanged += new System.EventHandler(this.CalculateDiff);
-            this.DiffSet2.TextUpdate += new System.EventHandler(this.CalculateDiff);
+            this.diffSet2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.diffSet2.FormattingEnabled = true;
+            this.diffSet2.Location = new System.Drawing.Point(173, 427);
+            this.diffSet2.MaxLength = 1;
+            this.diffSet2.Name = "diffSet2";
+            this.diffSet2.Size = new System.Drawing.Size(106, 38);
+            this.diffSet2.Sorted = true;
+            this.diffSet2.TabIndex = 18;
+            this.diffSet2.SelectedIndexChanged += new System.EventHandler(this.CalculateDiff);
+            this.diffSet2.TextUpdate += new System.EventHandler(this.CalculateDiff);
             // 
-            // DiffSet1
+            // diffSet1
             // 
-            this.DiffSet1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DiffSet1.FormattingEnabled = true;
-            this.DiffSet1.Location = new System.Drawing.Point(25, 427);
-            this.DiffSet1.MaxLength = 1;
-            this.DiffSet1.Name = "DiffSet1";
-            this.DiffSet1.Size = new System.Drawing.Size(106, 38);
-            this.DiffSet1.Sorted = true;
-            this.DiffSet1.TabIndex = 17;
-            this.DiffSet1.SelectedIndexChanged += new System.EventHandler(this.CalculateDiff);
-            this.DiffSet1.TextUpdate += new System.EventHandler(this.CalculateDiff);
+            this.diffSet1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.diffSet1.FormattingEnabled = true;
+            this.diffSet1.Location = new System.Drawing.Point(25, 427);
+            this.diffSet1.MaxLength = 1;
+            this.diffSet1.Name = "diffSet1";
+            this.diffSet1.Size = new System.Drawing.Size(106, 38);
+            this.diffSet1.Sorted = true;
+            this.diffSet1.TabIndex = 17;
+            this.diffSet1.SelectedIndexChanged += new System.EventHandler(this.CalculateDiff);
+            this.diffSet1.TextUpdate += new System.EventHandler(this.CalculateDiff);
             // 
-            // DiffResult
+            // diffResult
             // 
-            this.DiffResult.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DiffResult.Location = new System.Drawing.Point(319, 428);
-            this.DiffResult.Name = "DiffResult";
-            this.DiffResult.ReadOnly = true;
-            this.DiffResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.DiffResult.Size = new System.Drawing.Size(575, 37);
-            this.DiffResult.TabIndex = 19;
-            this.DiffResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.diffResult.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.diffResult.Location = new System.Drawing.Point(319, 428);
+            this.diffResult.Name = "diffResult";
+            this.diffResult.ReadOnly = true;
+            this.diffResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.diffResult.Size = new System.Drawing.Size(575, 37);
+            this.diffResult.TabIndex = 19;
+            this.diffResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label9
             // 
@@ -491,42 +491,42 @@
             this.label9.Text = " \\                      = {                                                      " +
     "                                           }";
             // 
-            // SymmDiffSet2
+            // symmDiffSet2
             // 
-            this.SymmDiffSet2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SymmDiffSet2.FormattingEnabled = true;
-            this.SymmDiffSet2.Location = new System.Drawing.Point(173, 483);
-            this.SymmDiffSet2.MaxLength = 1;
-            this.SymmDiffSet2.Name = "SymmDiffSet2";
-            this.SymmDiffSet2.Size = new System.Drawing.Size(106, 38);
-            this.SymmDiffSet2.Sorted = true;
-            this.SymmDiffSet2.TabIndex = 21;
-            this.SymmDiffSet2.SelectedIndexChanged += new System.EventHandler(this.CalculateSymmDiff);
-            this.SymmDiffSet2.TextUpdate += new System.EventHandler(this.CalculateSymmDiff);
+            this.symmDiffSet2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.symmDiffSet2.FormattingEnabled = true;
+            this.symmDiffSet2.Location = new System.Drawing.Point(173, 483);
+            this.symmDiffSet2.MaxLength = 1;
+            this.symmDiffSet2.Name = "symmDiffSet2";
+            this.symmDiffSet2.Size = new System.Drawing.Size(106, 38);
+            this.symmDiffSet2.Sorted = true;
+            this.symmDiffSet2.TabIndex = 21;
+            this.symmDiffSet2.SelectedIndexChanged += new System.EventHandler(this.CalculateSymmDiff);
+            this.symmDiffSet2.TextUpdate += new System.EventHandler(this.CalculateSymmDiff);
             // 
-            // SymmDiffSet1
+            // symmDiffSet1
             // 
-            this.SymmDiffSet1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SymmDiffSet1.FormattingEnabled = true;
-            this.SymmDiffSet1.Location = new System.Drawing.Point(25, 483);
-            this.SymmDiffSet1.MaxLength = 1;
-            this.SymmDiffSet1.Name = "SymmDiffSet1";
-            this.SymmDiffSet1.Size = new System.Drawing.Size(106, 38);
-            this.SymmDiffSet1.Sorted = true;
-            this.SymmDiffSet1.TabIndex = 20;
-            this.SymmDiffSet1.SelectedIndexChanged += new System.EventHandler(this.CalculateSymmDiff);
-            this.SymmDiffSet1.TextUpdate += new System.EventHandler(this.CalculateSymmDiff);
+            this.symmDiffSet1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.symmDiffSet1.FormattingEnabled = true;
+            this.symmDiffSet1.Location = new System.Drawing.Point(25, 483);
+            this.symmDiffSet1.MaxLength = 1;
+            this.symmDiffSet1.Name = "symmDiffSet1";
+            this.symmDiffSet1.Size = new System.Drawing.Size(106, 38);
+            this.symmDiffSet1.Sorted = true;
+            this.symmDiffSet1.TabIndex = 20;
+            this.symmDiffSet1.SelectedIndexChanged += new System.EventHandler(this.CalculateSymmDiff);
+            this.symmDiffSet1.TextUpdate += new System.EventHandler(this.CalculateSymmDiff);
             // 
-            // SymmDiffResult
+            // symmDiffResult
             // 
-            this.SymmDiffResult.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SymmDiffResult.Location = new System.Drawing.Point(319, 484);
-            this.SymmDiffResult.Name = "SymmDiffResult";
-            this.SymmDiffResult.ReadOnly = true;
-            this.SymmDiffResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.SymmDiffResult.Size = new System.Drawing.Size(575, 37);
-            this.SymmDiffResult.TabIndex = 22;
-            this.SymmDiffResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.symmDiffResult.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.symmDiffResult.Location = new System.Drawing.Point(319, 484);
+            this.symmDiffResult.Name = "symmDiffResult";
+            this.symmDiffResult.ReadOnly = true;
+            this.symmDiffResult.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.symmDiffResult.Size = new System.Drawing.Size(575, 37);
+            this.symmDiffResult.TabIndex = 22;
+            this.symmDiffResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label10
             // 
@@ -572,40 +572,40 @@
             this.ClientSize = new System.Drawing.Size(922, 695);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.buttonRandomInit);
-            this.Controls.Add(this.SymmDiffSet2);
-            this.Controls.Add(this.SymmDiffSet1);
-            this.Controls.Add(this.SymmDiffResult);
+            this.Controls.Add(this.symmDiffSet2);
+            this.Controls.Add(this.symmDiffSet1);
+            this.Controls.Add(this.symmDiffResult);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.DiffSet2);
-            this.Controls.Add(this.DiffSet1);
-            this.Controls.Add(this.DiffResult);
+            this.Controls.Add(this.diffSet2);
+            this.Controls.Add(this.diffSet1);
+            this.Controls.Add(this.diffResult);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.CrossSet2);
-            this.Controls.Add(this.CrossSet1);
-            this.Controls.Add(this.CrossResult);
+            this.Controls.Add(this.crossSet2);
+            this.Controls.Add(this.crossSet1);
+            this.Controls.Add(this.crossResult);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.AdditionResult);
+            this.Controls.Add(this.additionResult);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.AdditionSet);
+            this.Controls.Add(this.additionSet);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.UnionSet2);
-            this.Controls.Add(this.UnionSet1);
+            this.Controls.Add(this.unionSet2);
+            this.Controls.Add(this.unionSet1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.UnionResult);
-            this.Controls.Add(this.BelongsResult);
-            this.Controls.Add(this.InclusionResult);
-            this.Controls.Add(this.BelongSet);
-            this.Controls.Add(this.InclusionSet1);
-            this.Controls.Add(this.InclusionSet2);
+            this.Controls.Add(this.unionResult);
+            this.Controls.Add(this.belongsResult);
+            this.Controls.Add(this.inclusionResult);
+            this.Controls.Add(this.belongSet);
+            this.Controls.Add(this.inclusionSet1);
+            this.Controls.Add(this.inclusionSet2);
             this.Controls.Add(this.labelInclusion);
-            this.Controls.Add(this.BelongInt);
+            this.Controls.Add(this.belongInt);
             this.Controls.Add(this.buttonDeleteSet);
             this.Controls.Add(this.textBoxSet);
             this.Controls.Add(this.textBoxUniversuum);
-            this.Controls.Add(this.buttonResetSet);
+            this.Controls.Add(this.buttonRefreshSet);
             this.Controls.Add(this.comboBoxSet);
-            this.Controls.Add(this.buttonReset);
+            this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.buttonApplyUniversuum);
             this.Controls.Add(this.labelUniversuum);
             this.Controls.Add(this.buttonSaveSet);
@@ -629,43 +629,43 @@
         private Button buttonSaveSet;
         private Label labelUniversuum;
         private Button buttonApplyUniversuum;
-        private Button buttonReset;
+        private Button buttonRefresh;
         private ComboBox comboBoxSet;
-        private Button buttonResetSet;
+        private Button buttonRefreshSet;
         private TextBox textBoxUniversuum;
         private TextBox textBoxSet;
         private Label labelSet;
         private Button buttonDeleteSet;
         private Label label1;
-        private TextBox BelongInt;
+        private TextBox belongInt;
         private Label labelInclusion;
-        private ComboBox InclusionSet2;
-        private ComboBox InclusionSet1;
-        private ComboBox BelongSet;
+        private ComboBox inclusionSet2;
+        private ComboBox inclusionSet1;
+        private ComboBox belongSet;
         private Label label2;
-        private TextBox InclusionResult;
-        private TextBox BelongsResult;
-        private TextBox UnionResult;
+        private TextBox inclusionResult;
+        private TextBox belongsResult;
+        private TextBox unionResult;
         private Label label4;
         private Label label5;
-        private ComboBox UnionSet1;
-        private ComboBox UnionSet2;
+        private ComboBox unionSet1;
+        private ComboBox unionSet2;
         private Label label6;
-        private ComboBox AdditionSet;
+        private ComboBox additionSet;
         private Label label7;
-        private TextBox AdditionResult;
+        private TextBox additionResult;
         private Label label3;
-        private ComboBox CrossSet2;
-        private ComboBox CrossSet1;
-        private TextBox CrossResult;
+        private ComboBox crossSet2;
+        private ComboBox crossSet1;
+        private TextBox crossResult;
         private Label label8;
-        private ComboBox DiffSet2;
-        private ComboBox DiffSet1;
-        private TextBox DiffResult;
+        private ComboBox diffSet2;
+        private ComboBox diffSet1;
+        private TextBox diffResult;
         private Label label9;
-        private ComboBox SymmDiffSet2;
-        private ComboBox SymmDiffSet1;
-        private TextBox SymmDiffResult;
+        private ComboBox symmDiffSet2;
+        private ComboBox symmDiffSet1;
+        private TextBox symmDiffResult;
         private Label label10;
 
         Universum Univers;
